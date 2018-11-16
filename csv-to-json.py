@@ -7,6 +7,6 @@ with open(fileName, encoding="utf-8") as f:
 
 json_data = json.dumps(data)
 
-with open('data.json', 'w') as outfile:
+with open('organizationInfo.js', 'w') as outfile:
     outfile.write("var data=")
     json.dump(json_data, outfile)
