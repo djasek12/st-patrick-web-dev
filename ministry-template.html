@@ -4,6 +4,11 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div id="breadcrumbs">
+            The breadcrumbs go here
+        </div>
+    </div>
+    <div class="row">
         <div class="col-xs-12">
             <div class="row" style="text-align: center;">
                 <h1 id="ministryName"></h1>
@@ -54,7 +59,7 @@
     
     
     <div class="row">
-        <div class="col-xs-4 col-xs-offset-2">
+        <div class="col-xs-8 col-xs-offset-2">
             <h4 style="text-align: center;">Getting Involved</h2>
             <div class="well">
                 <div class="row" style="padding: 5px 10px;">
@@ -102,58 +107,67 @@
         return k?p[k]:p;
     }
 
-    organizations = JSON.parse(data)
-    organizationName = getSearchParams("group");
+    ministries = JSON.parse(data)
+    ministryName = getSearchParams("group");
 
-    organizations.forEach(function(organization) {
-        if(organization["urlVar"] == organizationName) {
-            console.log(organization["urlVar"]);
-            org = organization
+    ministries.forEach(function(m) {
+        console.log(m["urlVar"]);
+        if(m["urlVar"] == ministryName) {
+            ministry = m
         }
     });
 
 
     if($(".page-header a")[0]) {
-        $(".page-header a")[0].text = org["ministryName"];
+        $(".page-header a")[0].text = ministry["ministryName"];
         $("#ministryName").remove();
     } else {
-        $("#ministryName").text(org["ministryName"]);
+        $("#ministryName").text(ministry["ministryName"]);
     }
 
-    var categories = org["category"].split(", ");
+    var categories = ministry["category"].split(", ");
     categories.forEach(function(cat) {
         $("#categories").append('<span class="label label-default" style="margin: 2px; display: inline-block">' + cat + "</span>")
     });
 
-    var pOrgAttributes = ["mission", "history", "regActivities", "fundraisers", "regMeetings", "specialEvents"];
-    pOrgAttributes.forEach(function(key) {
-        if(org[key]) {
-            $("#" + key).append('<p>' + org[key] + "</p>")
+    var pMinistryAttributes = ["mission", "history", "regActivities", "fundraisers", "regMeetings", "specialEvents"];
+    pMinistryAttributes.forEach(function(key) {
+        if(ministry[key]) {
+            $("#" + key).append('<p>' + ministry[key] + "</p>")
         } else {
             $("#" + key).html("");
         }
     });
 
-    var spanOrgAttributes = ["contactPerson", "phone", "hrsPerMonth", "numMembers", "prereqs", "keyDates", "audience",];
-    spanOrgAttributes.forEach(function(key) {
+    var spanMinistryAttributes = ["contactPerson", "phone", "hrsPerMonth", "numMembers", "prereqs", "keyDates", "audience",];
+    spanMinistryAttributes.forEach(function(key) {
             console.log(key);
-            if(org[key]) {
-                $("#" + key).append('<span>' + org[key] + "</span>")
+            if(ministry[key]) {
+                $("#" + key).append('<span>' + ministry[key] + "</span>")
             } else {
                 $("#" + key).html("");
         }
     });
 
-    if(org["skillsNeeded"]) {
-        org["skillsNeeded"].split(", ").forEach(function(skill) {
+    if(ministry["skillsNeeded"]) {
+        ministry["skillsNeeded"].split(", ").forEach(function(skill) {
             $("#skillsNeeded").append('<span class="label label-default" style="display: inline-block; margin: 2px;" >' + skill + "</span>")
         });
     } else {
         $("skillsNeeded").html("");
     }
 
-    // $("#contact").html("<strong>Contact:</strong> " + org["contact"]);
-    org["email"] = org["email"].replace("%", "@");
-    $("#email").html("<strong>Email:</strong> <a href='mailto:" + org["email"] + "'>" + org["email"] +"</a>");
+    // $("#contact").html("<strong>Contact:</strong> " + ministry["contact"]);
+    ministry["email"] = ministry["email"].replace("%", "@");
+    $("#email").html("<strong>Email:</strong> <a href='mailto:" + ministry["email"] + "'>" + ministry["email"] +"</a>");
+
+    header = ministry["header"];
+    if(header == "pray" || header == "pray") {
+        theme = "Come to the Supper of the Lamb";
+    } else {
+        theme = "Bring Christ to a Hungry World";
+    }
+
+    $("#breadcrumbs").html(theme + " >> " + header.charAt(0).toUpperCase() + header.slice(1))
 
 </script>

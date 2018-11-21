@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="http://dev.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js"></script>
+
+<div class="container-fluid">
+    <h1 style="text-align: center;">Ministries</h1>
+    <div class="row">
+        <div class="well col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3">
+            <div id="ministries">
+                    Ministry List
+            </div>
+        </div>
+    </div>
+</div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script>
+    ministries = JSON.parse(data);
+    $("#ministries").html("");
+    ministries.forEach(function(ministry) {
+        $("#ministries").append('<div><a href="http://dev.stpatrickcolumbus.org/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
+    });
+</script>
