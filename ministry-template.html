@@ -7,100 +7,86 @@
         <div id="breadcrumbs">
             The breadcrumbs go here
         </div>
+        <h1 id="ministryName">Ministry Name</h1>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="row" style="text-align: center;">
-                <h1 id="ministryName"></h1>
                 <img src="https://columbusfrassatisociety.files.wordpress.com/2018/10/dsc09911_2.jpg?w=2500&h=" style="max-height: 400px;">        
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 15px;">
                 <div id="mission">
                     <strong>Mission:</strong>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2">
-                    <h4>Quick Facts</h2>
+                    <h4 style="text-align: center;">Quick Facts</h4>
                     <div class="well">
                         <div id="audience">
-                            <strong>Audience:</strong>
+                            <strong>Audience: </strong>
                         </div>
                         <div id="numMembers">
-                            <strong>Number of Members:</strong>
+                            <strong>Number of Members: </strong>
                         </div>
                         <div id="categories">
-                            <strong>Category:</strong>
+                            <strong>Category: </strong>
                         </div>
                     </div>
                 </div>
-                
             </div>
             <div class="row">
                 <div id="history">
                     <strong>History: </strong>
                 </div>
                 <div id="regActivities">
-                    <strong>Activities:</strong>
+                    <strong>Activities: </strong>
                 </div>
                 <div id="regMeetings">
-                    <strong>Meetings:</strong>
+                    <strong>Meetings: </strong>
                 </div>
                 <div id="fundraisers">
-                    <strong>Fundraisers:</strong>
+                    <strong>Fundraisers: </strong>
                 </div>
                 <div id="specialEvents">
-                    <strong>Special Events:</strong>
+                    <strong>Special Events: </strong>
                 </div>
             </div>
             </div>
         </div>
     </div>
-    
-    
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             <h4 style="text-align: center;">Getting Involved</h2>
             <div class="well">
-                <div class="row" style="padding: 5px 10px;">
-                    <div id="hrsPerMonth">
-                        <strong>Time Commitment: </strong>
-                    </div>
+                <div id="hrsPerMonth">
+                    <strong>Time Commitment: </strong>
                 </div>
-                <div class="row" style="padding: 5px 10px;">
-                    <div id="skillsNeeded">
-                        <strong>Skills Needed: </strong>
-                    </div>
+                <div id="skillsNeeded">
+                    <strong>Skills Needed: </strong>
                 </div>
-                <div class="row" style="padding: 5px 10px;">
-                    <div id="prereqs">
-                        <strong>Prerequisites: </strong>
-                    </div>
+                <div id="prereqs">
+                    <strong>Prerequisites: </strong>
                 </div>
-                <div class="row" style="padding: 5px 10px;">
-                    <div id="keyDates">
-                        <strong>Key Dates: </strong>
-                    </div>
+                <div id="keyDates">
+                    <strong>Key Dates: </strong>
                 </div>
-                <div class="row" style="padding: 5px 10px;"> 
-                    <div id="contactPerson">
-                        <strong>Contact: </strong>
-                    </div>
+                <div id="contactPerson">
+                    <strong>Contact: </strong>
                 </div>
-                <div class="row" style="padding: 5px 10px;">
-                    <div id="email">
-                        Email: 
-                    </div>
+                <div id="email">
+                    Email:
                 </div>
             </div>
         </div>
     </div>
 </div>
-    
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script>
+
     function getSearchParams(k){
         var p={};
         location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
@@ -119,11 +105,10 @@
 
 
     if($(".page-header a")[0]) {
-        $(".page-header a")[0].text = ministry["ministryName"];
-        $("#ministryName").remove();
-    } else {
-        $("#ministryName").text(ministry["ministryName"]);
+        $(".page-header").remove();
+        $(".actions").remove();
     }
+    $("#ministryName").text(ministry["ministryName"]);
 
     var categories = ministry["category"].split(", ");
     categories.forEach(function(cat) {
@@ -149,6 +134,10 @@
         }
     });
 
+    if(ministry["hrsPerMonth"] && !isNaN(ministry["hrsPerMonth"])) {
+        $("#hrsPerMonth").append(" hours a month");
+    }
+
     if(ministry["skillsNeeded"]) {
         ministry["skillsNeeded"].split(", ").forEach(function(skill) {
             $("#skillsNeeded").append('<span class="label label-default" style="display: inline-block; margin: 2px;" >' + skill + "</span>")
@@ -171,3 +160,9 @@
     $("#breadcrumbs").html(theme + " >> " + header.charAt(0).toUpperCase() + header.slice(1))
 
 </script>
+
+<style>
+    #breadcrumbs {
+        font-weight: bold;
+    }
+</style>
