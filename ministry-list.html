@@ -3,12 +3,26 @@
 <script src="http://dev.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js"></script>
 
 <div class="container-fluid">
-    <h1 style="text-align: center;">Ministries</h1>
     <div class="row">
-        <div class="well col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3">
-            <div id="ministries">
-                    Ministry List
-            </div>
+        <h2 style="text-align: center;">Come to the Supper of the Lamb</h2>
+        <div id="pray-wrapper" class="category-wrapper well col-md-4 col-md-offset-1 col-xs-12">
+            <h2>Pray</h2>
+            <div id="pray" style="display: none;">Pray</div>
+        </div>
+        <div id="learn-wrapper" class="category-wrapper well col-md-4 col-md-offset-1 col-xs-12">
+            <h2>Learn</h2>
+            <div id="learn" style="display: none;">Learn</div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="text-align: center;">Bring Christ to a Hungry World</h2>
+        <div id="serve-wrapper" class="category-wrapper well col-md-4 col-md-offset-1 col-xs-12">
+            <h2>Serve</h2>
+            <div id="serve" style="display: none;">Serve</div>
+        </div>
+        <div id="connect-wrapper" class="category-wrapper well col-md-4 col-md-offset-1 col-xs-12">
+            <h2>Connect</h2>
+            <div id="connect" style="display: none;">Connect</div>
         </div>
     </div>
 </div>
@@ -17,9 +31,89 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script>
-    ministries = JSON.parse(data);
-    $("#ministries").html("");
-    ministries.forEach(function(ministry) {
-        $("#ministries").append('<div><a href="http://dev.stpatrickcolumbus.org/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
+    $(document).ready(function() {
+        ministries = JSON.parse(data);
+        $("#ministries").html("");
+        $("#connect").html("");
+        categories = {
+            "pray": [],
+            "learn": [],
+            "serve": [],
+            "connect": []
+        }
+        ministries.forEach(function(ministry) {
+            categories[ministry["header"]].push('<div class="ministryLink"><a href="http://dev.stpatrickcolumbus.org/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
+        });
+
+        $(".category-wrapper").hover(function() {
+            // try {
+            jQuery(this).children("h2").hide();
+            var category = jQuery(this).children("div")[0].id;
+            // } catch(err) {
+            //     $(this).children[0].hide();
+            //     var category = $(this).children[1].id;
+            // }
+            $category = jQuery("#" + category);
+            $category.html("");
+            categories[category].forEach(function(ministryLink) {
+                $category.append(ministryLink);
+            });
+            $category.show();
+        }, function() {
+            jQuery(this).children("h2").show();
+            jQuery(this).children("div").hide();
+        });
     });
 </script>
+
+<style>
+    #pray-wrapper {
+        background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/pray.jpg");
+        background-position: 0 -100px;
+    }
+
+    #learn-wrapper {
+        background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/learn.jpg");
+    }
+
+    #serve-wrapper {
+        background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/serve.jpg");
+    }
+
+    #connect-wrapper {
+        background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/connect.jpg");
+    }
+
+    .category-wrapper {
+        background-size: cover;
+        min-height: 300px;
+        display: table;
+        cursor: pointer;
+    }
+
+    .category-wrapper h2, .category-wrapper a {
+        text-align: center;
+        vertical-align: middle;
+        color: white;
+        text-shadow: -1px 0 20px black, 0 1px 20px black, 1px 0 20px black, 0 -1px 20px black;
+    }
+
+    .category-wrapper h2, .category-wrapper > div {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .category-wrapper:hover {
+        transform: scale(1.02);
+        transition: ease 0.3s;
+    }
+
+    .category-wrapper a {
+        font-size: 18px;
+    }
+
+    .ministryLink {
+        display: block;
+        text-align: center;
+    }
+</style>
