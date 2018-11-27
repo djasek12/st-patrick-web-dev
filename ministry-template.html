@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="ministries.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="http://dev.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js"></script>
 
 <div class="container-fluid">
@@ -12,7 +15,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="row" style="text-align: center;">
-                <img src="https://columbusfrassatisociety.files.wordpress.com/2018/10/dsc09911_2.jpg?w=2500&h=" style="max-height: 400px;">        
+                <img src="https://columbusfrassatisociety.files.wordpress.com/2018/10/dsc09911_2.jpg?w=2500&h=" style="max-height: 400px;">
             </div>
             <div class="row" style="margin-top: 15px;">
                 <div id="mission">
@@ -75,15 +78,18 @@
                     <strong>Contact: </strong>
                 </div>
                 <div id="email">
-                    Email:
+                    <strong>Email: </strong>
+                </div>
+                <div id="website">
+                    <strong>Website: </strong>
+                </div>
+                <div id="facebook">
+                    <strong>Facebook Page: </strong>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script>
 
@@ -124,13 +130,21 @@
         }
     });
 
-    var spanMinistryAttributes = ["contactPerson", "phone", "hrsPerMonth", "numMembers", "prereqs", "keyDates", "audience",];
+    var spanMinistryAttributes = ["contactPerson", "phone", "hrsPerMonth", "numMembers", "prereqs", "keyDates", "audience"];
     spanMinistryAttributes.forEach(function(key) {
-            console.log(key);
             if(ministry[key]) {
                 $("#" + key).append('<span>' + ministry[key] + "</span>")
             } else {
                 $("#" + key).html("");
+        }
+    });
+
+    var linkMinistryAttributes = ["website", "facebook"];
+    linkMinistryAttributes.forEach(function(link) {
+            if(ministry[link]) {
+                $("#" + link).append('<a href="' + ministry[link] + '">' + ministry[link].replace("https://", "").replace(/\/+$/, "") + '</a>');
+            } else {
+                $("#" + link).html("");
         }
     });
 
@@ -147,8 +161,10 @@
     }
 
     // $("#contact").html("<strong>Contact:</strong> " + ministry["contact"]);
-    ministry["email"] = ministry["email"].replace("%", "@");
-    $("#email").html("<strong>Email:</strong> <a href='mailto:" + ministry["email"] + "'>" + ministry["email"] +"</a>");
+    email = ministry["email"].replace("%", "@");
+    email.trim() != "" ? $("#email").html("<strong>Email:</strong> <a href='mailto:" + email + "'>" + email +"</a>") : $("#email").html("");
+
+
 
     header = ministry["header"];
     if(header == "pray" || header == "pray") {
@@ -160,9 +176,3 @@
     $("#breadcrumbs").html(theme + " >> " + header.charAt(0).toUpperCase() + header.slice(1))
 
 </script>
-
-<style>
-    #breadcrumbs {
-        font-weight: bold;
-    }
-</style>

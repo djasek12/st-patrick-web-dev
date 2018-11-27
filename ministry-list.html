@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="ministries.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="http://dev.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js"></script>
 
 <div class="container-fluid">
@@ -26,12 +29,26 @@
         </div>
     </div>
 </div>
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function($) {
+
+        function showMinistries(element) {
+            $(element).children("h2").hide();
+            var category = $(element).children("div")[0].id;
+            $category = $("#" + category);
+            $category.html("");
+            categories[category].forEach(function(ministryLink) {
+                $category.append(ministryLink);
+            });
+            $category.show();
+        }
+
+        function hideMinistries(element) {
+            $(element).children("h2").show();
+            $(element).children("div").hide();
+        }
+
         ministries = JSON.parse(data);
         $("#ministries").html("");
         $("#connect").html("");
@@ -46,74 +63,17 @@
         });
 
         $(".category-wrapper").hover(function() {
-            // try {
-            jQuery(this).children("h2").hide();
-            var category = jQuery(this).children("div")[0].id;
-            // } catch(err) {
-            //     $(this).children[0].hide();
-            //     var category = $(this).children[1].id;
-            // }
-            $category = jQuery("#" + category);
-            $category.html("");
-            categories[category].forEach(function(ministryLink) {
-                $category.append(ministryLink);
-            });
-            $category.show();
+            showMinistries(this)
         }, function() {
-            jQuery(this).children("h2").show();
-            jQuery(this).children("div").hide();
+            hideMinistries(this)
+        });
+        $(".category-wrapper").click(function() {
+            var $wrapper = $(this).closest(".category-wrapper")
+            if($wrapper.children('div').css("display") == "none") {
+                showMinistries($wrapper);
+            } else {
+                hideMinistries($wrapper);
+            }
         });
     });
 </script>
-
-<style>
-    #pray-wrapper {
-        background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/pray.jpg");
-        /* background-position: 0 -100px; */
-    }
-
-    #learn-wrapper {
-        background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/learn.jpg");
-    }
-
-    #serve-wrapper {
-        background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/serve.jpg");
-    }
-
-    #connect-wrapper {
-        background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/connect.jpg");
-    }
-
-    .category-wrapper {
-        background-size: cover;
-        min-height: 300px;
-        display: table;
-        cursor: pointer;
-    }
-
-    .category-wrapper h2, .category-wrapper a {
-        text-align: center;
-        vertical-align: middle;
-        color: white;
-        text-shadow: -1px 0 20px black, 0 1px 20px black, 1px 0 20px black, 0 -1px 20px black;
-    }
-
-    .category-wrapper h2, .category-wrapper > div {
-        display: table-cell;
-        vertical-align: middle;
-    }
-
-    .category-wrapper:hover {
-        transform: scale(1.02);
-        transition: ease 0.3s;
-    }
-
-    .category-wrapper a {
-        font-size: 18px;
-    }
-
-    .ministryLink {
-        display: block;
-        text-align: center;
-    }
-</style>

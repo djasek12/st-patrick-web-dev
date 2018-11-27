@@ -1,0 +1,57 @@
+#pray-wrapper {
+    background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/pray.jpg");
+    /* background-position: 0 -100px; */
+}
+
+#learn-wrapper {
+    background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/learn.jpg");
+}
+
+#serve-wrapper {
+    background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/serve.jpg");
+}
+
+#connect-wrapper {
+    background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/connect.jpg");
+}
+
+.category-wrapper {
+    background-size: cover;
+    min-height: 300px;
+    display: table;
+    cursor: pointer;
+}
+
+.category-wrapper h2, .category-wrapper a {
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    text-shadow: -1px 0 20px black, 0 1px 20px black, 1px 0 20px black, 0 -1px 20px black;
+}
+
+.category-wrapper h2, .category-wrapper > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.category-wrapper:hover {
+    transform: scale(1.02);
+    transition: ease 0.3s;
+}
+
+.category-wrapper a {
+    font-size: 18px;
+}
+
+.ministryLink {
+    display: block;
+    text-align: center;
+}
+
+#breadcrumbs {
+    font-weight: bold;
+}
+
+.well {
+    border: 1px solid #97BD18;
+}
