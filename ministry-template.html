@@ -27,10 +27,10 @@
                     <h4 style="text-align: center;">Quick Facts</h4>
                     <div class="well">
                         <div id="audience">
-                            <strong>Audience: </strong>
+                            <strong>Who:</strong>
                         </div>
                         <div id="numMembers">
-                            <strong>Number of Members: </strong>
+                            <strong>Current Membership:</strong>
                         </div>
                         <div id="categories">
                             <strong>Category: </strong>
@@ -65,8 +65,10 @@
                 <div id="hrsPerMonth">
                     <strong>Time Commitment: </strong>
                 </div>
-                <div id="skillsNeeded">
-                    <strong>Skills Needed: </strong>
+                <div class="row" style="padding: 5px 10px;">
+                    <div id="skillsNeeded">
+                        <strong>Helpful Skills: </strong>
+                    </div>
                 </div>
                 <div id="prereqs">
                     <strong>Prerequisites: </strong>
@@ -161,10 +163,8 @@
     }
 
     // $("#contact").html("<strong>Contact:</strong> " + ministry["contact"]);
-    email = ministry["email"].replace("%", "@");
-    email.trim() != "" ? $("#email").html("<strong>Email:</strong> <a href='mailto:" + email + "'>" + email +"</a>") : $("#email").html("");
-
-
+    ministry["email"] = ministry["email"].replace("%", "@").replace("!", ".");
+    $("#email").html("<strong>Email:</strong> <a href='mailto:" + ministry["email"] + "'>" + ministry["email"] +"</a>");
 
     header = ministry["header"];
     if(header == "pray" || header == "pray") {
