@@ -19,7 +19,6 @@
     background-size: cover;
     min-height: 300px;
     display: table;
-    cursor: pointer;
 }
 
 .category-wrapper h2, .category-wrapper a {
@@ -54,4 +53,15 @@
 
 .well {
     border: 1px solid #97BD18;
+}
+
+.missionTitle {
+    text-align: center;
+    font-size: 250%;
+}
+
+.scriptFont {
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    font-size: 18px;
 }
