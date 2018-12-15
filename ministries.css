@@ -1,24 +1,28 @@
 #pray-wrapper {
     background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/pray.jpg");
-    /* background-position: 0 -100px; */
+    background-position: center;
 }
 
 #learn-wrapper {
     background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/learn.jpg");
+    background-position: center;
 }
 
 #serve-wrapper {
     background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/serve.jpg");
+    background-position: center;
 }
 
 #connect-wrapper {
     background-image: url("http://dev.stpatrickcolumbus.org/images/ministries/connect.jpg");
+    background-position: center;
 }
 
 .category-wrapper {
     background-size: cover;
     min-height: 300px;
     display: table;
+    width: 100%;
 }
 
 .category-wrapper h2, .category-wrapper a {
@@ -48,10 +52,11 @@
 }
 
 #breadcrumbs {
-    font-weight: bold;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
 }
 
-.well {
+.well.ministryWell {
     border: 1px solid #97BD18;
 }
 
@@ -60,8 +65,19 @@
     font-size: 250%;
 }
 
+h3.missionSubTitle {
+    text-align: center;
+    font-size: 175%;
+    font-family: 'Cormorant Garamond', serif;
+    margin-top: -40px;
+}
+
 .scriptFont {
     font-family: 'Cormorant Garamond', serif;
     text-align: center;
     font-size: 18px;
+}
+
+.imageSubText {
+    text-align: center;
 }
