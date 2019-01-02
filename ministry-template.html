@@ -8,55 +8,56 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div id="breadcrumbs">
-            The breadcrumbs go here
+        <div class="col-xs-6">
+            <div id="breadcrumbs">
+                The breadcrumbs go here
+            </div>
         </div>
-        <h1 id="ministryName">Ministry Name</h1>
+        <div class="col-xs-6" style="text-align: right;">
+            <a href="http://dev.stpatrickcolumbus.org/ministries-organizations">All Ministries</a>
+        </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="row" style="text-align: center;">
-                <img src="https://columbusfrassatisociety.files.wordpress.com/2018/10/dsc09911_2.jpg?w=2500&h=" style="max-height: 400px;">
-            </div>
-            <div class="row" style="margin-top: 15px;">
-                <div id="mission">
-                    <strong>Mission:</strong>
+        <h1 id="ministryName">Ministry Name</h1>
+    </div>
+    <div id="image-wrapper" class="row" style="text-align: center;">
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div id="mission">
+            <strong>Mission:</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <h4 style="text-align: center;">Quick Facts</h4>
+            <div class="well ministryWell">
+                <div id="audience">
+                    <strong>Who: </strong>
+                </div>
+                <div id="numMembers">
+                    <strong>Current Membership: </strong>
+                </div>
+                <div id="categories">
+                    <strong>Category: </strong>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-8 col-xs-offset-2">
-                    <h4 style="text-align: center;">Quick Facts</h4>
-                    <div class="well ministryWell">
-                        <div id="audience">
-                            <strong>Who: </strong>
-                        </div>
-                        <div id="numMembers">
-                            <strong>Current Membership: </strong>
-                        </div>
-                        <div id="categories">
-                            <strong>Category: </strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div id="history">
-                    <strong>History: </strong>
-                </div>
-                <div id="regActivities">
-                    <strong>Activities: </strong>
-                </div>
-                <div id="regMeetings">
-                    <strong>Meetings: </strong>
-                </div>
-                <div id="fundraisers">
-                    <strong>Fundraisers: </strong>
-                </div>
-                <div id="specialEvents">
-                    <strong>Special Events: </strong>
-                </div>
-            </div>
-            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="history">
+            <strong>History: </strong>
+        </div>
+        <div id="regActivities">
+            <strong>Activities: </strong>
+        </div>
+        <div id="regMeetings">
+            <strong>Meetings: </strong>
+        </div>
+        <div id="fundraisers">
+            <strong>Fundraisers: </strong>
+        </div>
+        <div id="specialEvents">
+            <strong>Special Events: </strong>
         </div>
     </div>
     <div class="row">
@@ -81,6 +82,9 @@
                 <div id="email">
                     <strong>Email: </strong>
                 </div>
+                <div id="phone">
+                    <strong>Phone: </strong>
+                </div>
                 <div id="website">
                     <strong>Website: </strong>
                 </div>
@@ -104,9 +108,9 @@
     ministryName = getSearchParams("group");
 
     ministries.forEach(function(m) {
-        console.log(m["urlVar"]);
         if(m["urlVar"] == ministryName) {
             ministry = m
+            console.log(m)
         }
     });
 
@@ -143,7 +147,7 @@
     var linkMinistryAttributes = ["website", "facebook"];
     linkMinistryAttributes.forEach(function(link) {
             if(ministry[link]) {
-                $("#" + link).append('<a href="' + ministry[link] + '">' + ministry[link].replace("https://", "").replace(/\/+$/, "") + '</a>');
+                $("#" + link).append('<a href="' + ministry[link] + '" target="_blank">' + ministry[link].replace("https://", "").replace(/\/+$/, "") + '</a>');
             } else {
                 $("#" + link).html("");
         }
@@ -158,12 +162,15 @@
             $("#skillsNeeded").append('<span class="label label-default" style="display: inline-block; margin: 2px;" >' + skill + "</span>")
         });
     } else {
-        $("skillsNeeded").html("");
+        $("#skillsNeeded").empty();
     }
 
-    // $("#contact").html("<strong>Contact:</strong> " + ministry["contact"]);
-    ministry["email"] = ministry["email"].replace("%", "@").replace("!", ".");
-    $("#email").html("<strong>Email:</strong> <a href='mailto:" + ministry["email"] + "'>" + ministry["email"] +"</a>");
+    if(ministry["email"]) {
+        ministry["email"] = ministry["email"].replace("%", "@").replace("!", ".");
+        $("#email").html("<strong>Email:</strong> <a href='mailto:" + ministry["email"] + "'>" + ministry["email"] +"</a>");
+    } else {
+        $("#email").empty();
+    }
 
     header = ministry["header"];
     if(header == "pray" || header == "pray") {
@@ -172,6 +179,20 @@
         theme = "Bring Christ to a Hungry World";
     }
 
-    $("#breadcrumbs").html(theme + " >> " + header.charAt(0).toUpperCase() + header.slice(1))
+    $("#breadcrumbs").html(theme + " >> " + header.charAt(0).toUpperCase() + header.slice(1));
+
+    if(ministry["image"].length > 0) {
+        $("#image-wrapper").append('<img style="max-height: 400px;" src="http://dev.stpatrickcolumbus.org/images/ministries/' + ministry["image"] + '">');
+    } else {
+        $("#image-wrapper").append('<div class="replacementImage textOverImage" style="background-image: url(http://dev.stpatrickcolumbus.org/images/ministries/' + ministry["header"] + '-blur.jpg">' + ministry["header"] + '</div>');
+    }
+
+    // hacky code to fix weird rotating image
+    if(ministry["image"] == "VBS2018.jpg") {
+        $("#image-wrapper img").css('transform', 'rotate(90deg)');
+        $("#image-wrapper img").css('max-width', '400px');
+        $("#image-wrapper img").css('margin-top', '50px');
+        $("#image-wrapper").css('height', '400px');
+    }
 
 </script>

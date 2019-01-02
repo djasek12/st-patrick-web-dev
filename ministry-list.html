@@ -89,7 +89,9 @@
             "connect": []
         }
         ministries.forEach(function(ministry) {
-            categories[ministry["header"]].push('<div class="ministryLink"><a href="http://dev.stpatrickcolumbus.org/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
+            if(ministry.urlVar.length > 0) {
+                categories[ministry["header"]].push('<div class="ministryLink"><a href="http://dev.stpatrickcolumbus.org/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
+            }
         });
 
         $(".category-wrapper").hover(function() {

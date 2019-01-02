@@ -20,12 +20,12 @@
 
 .category-wrapper {
     background-size: cover;
-    min-height: 300px;
+    min-height: 350px;
     display: table;
     width: 100%;
 }
 
-.category-wrapper h2, .category-wrapper a {
+.category-wrapper h2, .category-wrapper a, .textOverImage {
     text-align: center;
     vertical-align: middle;
     color: white;
@@ -43,7 +43,7 @@
 }
 
 .category-wrapper a {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .ministryLink {
@@ -80,4 +80,16 @@ h3.missionSubTitle {
 
 .imageSubText {
     text-align: center;
+}
+
+.replacementImage {
+    height: 400px;
+    line-height: 400px;
+    background-position: center;
+    background-size: cover;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 40px;
+    text-transform: capitalize;
+    box-shadow: 0 0 8px 8px white inset;
 }
