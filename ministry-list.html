@@ -3,7 +3,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="http://dev.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js"></script>
+<script src="/templates/joomspirit_99/organizationInfo.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i" rel="stylesheet">
 
 <div class="container-fluid">
@@ -88,9 +88,10 @@
             "serve": [],
             "connect": []
         }
+
         ministries.forEach(function(ministry) {
             if(ministry.urlVar.length > 0) {
-                categories[ministry["header"]].push('<div class="ministryLink"><a href="http://dev.stpatrickcolumbus.org/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
+                categories[ministry["header"]].push('<div class="ministryLink"><a href="/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
             }
         });
 
@@ -99,6 +100,7 @@
         }, function() {
             hideMinistries(this)
         });
+
         $(".category-wrapper").click(function() {
             var $wrapper = $(this).closest(".category-wrapper")
             if($wrapper.children('div').css("display") == "none") {
@@ -108,4 +110,5 @@
             }
         });
     });
+
 </script>
