@@ -20,7 +20,7 @@
 
 .category-wrapper {
     background-size: cover;
-    min-height: 350px;
+    height: 200px;
     display: table;
     width: 100%;
 }
@@ -48,7 +48,6 @@
 
 .ministryLink {
     display: block;
-    text-align: center;
 }
 
 #breadcrumbs {
@@ -78,10 +77,6 @@ h3.missionSubTitle {
     font-size: 18px;
 }
 
-.imageSubText {
-    text-align: center;
-}
-
 .replacementImage {
     height: 300px;
     line-height: 300px;
@@ -92,4 +87,9 @@ h3.missionSubTitle {
     font-size: 40px;
     text-transform: capitalize;
     box-shadow: 0 0 8px 8px white inset;
+}
+
+.linkList {
+    text-align: left;
+    margin-bottom: 15px;
 }

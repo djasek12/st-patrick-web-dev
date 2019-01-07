@@ -1,114 +1,92 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="ministries.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="ministries.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="/templates/joomspirit_99/organizationInfo.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/templates/joomspirit_99/organizationInfo.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i" rel="stylesheet">
 
-<div class="container-fluid">
-    <div class="row">
-        <p style="text-align: center;" class="scriptFont"><strong>Contemplare, et contemplata aliis tradere</strong></p>
-        <p>As St. Dominic brought his friars together to encounter Christ in prayer, study, and community (Contemplare), and then to hand on the fruits of this encounter to others through preaching (et contemplata aliis tradere), St. Patrick parish welcomes Catholics from far and near to encounter Christ in the Supper of the Lamb and in the saving truth of our Catholic faith, so that we can hand on what we have received to a world hungry for his truth given in love.</p>
-        <p>Our parish ministries and organizations flow directly from this mission: </p>
+    <div class="container-fluid">
+        <div class="row">
+            <p style="text-align: center;" class="scriptFont"><strong>Contemplare, et contemplata aliis tradere</strong></p>
+            <p>As St. Dominic brought his friars together to encounter Christ in prayer, study, and community (Contemplare), and then to hand on the fruits of this encounter to others through preaching (et contemplata aliis tradere), St. Patrick parish welcomes Catholics from far and near to encounter Christ in the Supper of the Lamb and in the saving truth of our Catholic faith, so that we can hand on what we have received to a world hungry for his truth given in love.</p>
+            <p>Our parish ministries and organizations flow directly from this mission: </p>
+        </div>
+        <div class="row">
+            <h2 class="missionTitle">Come to the Supper of the Lamb</h2>
+            <h3 class="missionSubTitle">Contemplare</h3>
+            <div class="col-md-6 col-xs-12">
+                <div id="pray-wrapper" class="category-wrapper well">    
+                    <h2 class="missionTitle">Pray</h2>
+                </div>
+                <div>
+                    <p>Participate, prepare, and serve in parish liturgy and devotions</p>
+                </div>
+                <div id="pray" class="linkList"></div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div id="learn-wrapper" class="category-wrapper well">
+                    <h2 class="missionTitle">Learn</h2>
+                </div>
+                <div>
+                    <p>Deepen your knowledge of our faith and help others to deepen theirs</p>
+                </div>
+                <div id="learn" class="linkList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="missionTitle">Bring Christ to a Hungry World</h2>
+            <h3 class="missionSubTitle">et contemplata aliis tradere</h3>
+            <div class="col-md-6 col-xs-12">
+                <div id="serve-wrapper" class="category-wrapper well">
+                    <h2 class="missionTitle">Serve</h2>
+                </div>
+                <div>
+                    <p>Reach out to our community in works of mercy and love</p>
+                </div>
+                <div id="serve" class="linkList"></div>
+            </div>
+            
+            <div class="col-md-6 col-xs-12">
+                <div id="connect-wrapper" class="category-wrapper well">
+                    <h2 class="missionTitle">Connect</h2>
+                </div>
+                <div>
+                    <p>Share faith and friendship with your fellow Catholics</p>
+                </div>
+                <div id="connect" class="linkList"></div>
+            </div>
+            
+        </div>
     </div>
-    <div class="row">
-        <h2 class="missionTitle">Come to the Supper of the Lamb</h2>
-        <h3 class="missionSubTitle">Contemplare</h3>
-        <div class="col-md-6 col-xs-12">
-            <div id="pray-wrapper" class="category-wrapper well">
-                <h2 class="missionTitle">Pray</h2>
-                <div id="pray" style="display: none;">Pray</div>
-            </div>
-            <div class="imageSubText">
-                <p>Participate, prepare, and serve in parish liturgy and devotions</p>
-            </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-            <div id="learn-wrapper" class="category-wrapper well">
-                <h2 class="missionTitle">Learn</h2>
-                <div id="learn" style="display: none;">Learn</div>
-            </div>
-            <div class="imageSubText">
-                <p>Deepen your knowledge of our faith and help others to deepen theirs</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <h2 class="missionTitle">Bring Christ to a Hungry World</h2>
-        <h3 class="missionSubTitle">et contemplata aliis tradere</h3>
-        <div class="col-md-6 col-xs-12">
-            <div id="serve-wrapper" class="category-wrapper well">
-                <h2 class="missionTitle">Serve</h2>
-                <div id="serve" style="display: none;">Serve</div>
-            </div>
-            <div class="imageSubText">
-                <p>Reach out to our community in works of mercy and love</p>
-            </div>
-        </div>
-        
-        <div class="col-md-6 col-xs-12">
-            <div id="connect-wrapper" class="category-wrapper well">
-                <h2 class="missionTitle">Connect</h2>
-                <div id="connect" style="display: none;">Connect</div>
-            </div>
-            <div class="imageSubText">
-                <p>Share faith and friendship with your fellow Catholics</p>
-            </div>
-        </div>
-        
-    </div>
-</div>
 
-<script>
-    $(document).ready(function($) {
+    <script>
+        $(document).ready(function($) {
 
-        function showMinistries(element) {
-            $(element).children("h2").hide();
-            var category = $(element).children("div")[0].id;
-            $category = $("#" + category);
-            $category.html("");
-            categories[category].forEach(function(ministryLink) {
-                $category.append(ministryLink);
+            function showMinistries(element) {
+                $(".linkList").html("");
+                ["pray", "learn", "serve", "connect"].forEach(function(category) {
+                    categories[category].forEach(function(ministryLink) {
+                        $("#" + category).append(ministryLink);
+                    });
+                });
+            }
+
+            ministries = JSON.parse(data);
+            categories = {
+                "pray": [],
+                "learn": [],
+                "serve": [],
+                "connect": []
+            }
+
+            ministries.forEach(function(ministry) {
+                if(ministry.urlVar.length > 0) {
+                    categories[ministry["header"]].push('<div class="ministryLink"><a href="/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
+                }
             });
-            $category.show();
-        }
 
-        function hideMinistries(element) {
-            $(element).children("h2").show();
-            $(element).children("div").hide();
-        }
-
-        ministries = JSON.parse(data);
-        $("#ministries").html("");
-        $("#connect").html("");
-        categories = {
-            "pray": [],
-            "learn": [],
-            "serve": [],
-            "connect": []
-        }
-
-        ministries.forEach(function(ministry) {
-            if(ministry.urlVar.length > 0) {
-                categories[ministry["header"]].push('<div class="ministryLink"><a href="/index.php?option=com_content&view=article&id=446&group=' + ministry["urlVar"] + '">' + ministry["ministryName"] + '</a></div>');
-            }
+            showMinistries();
         });
 
-        $(".category-wrapper").hover(function() {
-            showMinistries(this)
-        }, function() {
-            hideMinistries(this)
-        });
-
-        $(".category-wrapper").click(function() {
-            var $wrapper = $(this).closest(".category-wrapper")
-            if($wrapper.children('div').css("display") == "none") {
-                showMinistries($wrapper);
-            } else {
-                hideMinistries($wrapper);
-            }
-        });
-    });
-
-</script>
+    </script>
