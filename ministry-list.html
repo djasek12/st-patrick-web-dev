@@ -19,18 +19,14 @@
                 <div id="pray-wrapper" class="category-wrapper well">    
                     <h2 class="missionTitle">Pray</h2>
                 </div>
-                <div>
-                    <p>Participate, prepare, and serve in parish liturgy and devotions</p>
-                </div>
+                <p>Participate, prepare, and serve in parish liturgy and devotions</p>
                 <div id="pray" class="linkList"></div>
             </div>
             <div class="col-md-6 col-xs-12">
                 <div id="learn-wrapper" class="category-wrapper well">
                     <h2 class="missionTitle">Learn</h2>
                 </div>
-                <div>
-                    <p>Deepen your knowledge of our faith and help others to deepen theirs</p>
-                </div>
+                <p>Deepen your knowledge of our faith and help others to deepen theirs</p>
                 <div id="learn" class="linkList"></div>
             </div>
         </div>
@@ -41,9 +37,7 @@
                 <div id="serve-wrapper" class="category-wrapper well">
                     <h2 class="missionTitle">Serve</h2>
                 </div>
-                <div>
-                    <p>Reach out to our community in works of mercy and love</p>
-                </div>
+                <p>Reach out to our community in works of mercy and love</p>
                 <div id="serve" class="linkList"></div>
             </div>
             
@@ -51,9 +45,7 @@
                 <div id="connect-wrapper" class="category-wrapper well">
                     <h2 class="missionTitle">Connect</h2>
                 </div>
-                <div>
-                    <p>Share faith and friendship with your fellow Catholics</p>
-                </div>
+                <p>Share faith and friendship with your fellow Catholics</p>
                 <div id="connect" class="linkList"></div>
             </div>
             
@@ -66,7 +58,7 @@
             function showMinistries(element) {
                 $(".linkList").html("");
                 ["pray", "learn", "serve", "connect"].forEach(function(category) {
-                    categories[category].forEach(function(ministryLink) {
+                    categories[category].sort().forEach(function(ministryLink) {
                         $("#" + category).append(ministryLink);
                     });
                 });
