@@ -52,7 +52,8 @@
 }
 
 #breadcrumbs {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
     font-size: 18px;
 }
 
@@ -68,12 +69,14 @@
 h3.missionSubTitle {
     text-align: center;
     font-size: 175%;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
     margin-top: -40px;
 }
 
 .scriptFont {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
     text-align: center;
     font-size: 18px;
 }
