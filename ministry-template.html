@@ -1,10 +1,14 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
 <link rel="stylesheet" href="ministries.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://www.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i" rel="stylesheet">
+<script src="https://www.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
 
 <div class="container-fluid">
     <div class="row">
@@ -21,6 +25,13 @@
         <h1 id="ministryName">Ministry Name</h1>
     </div>
     <div id="image-wrapper" class="row" style="text-align: center;">
+    </div>
+    <div class="row">
+        <div class="your-class">
+            <div>your content</div>
+            <div>your content</div>
+            <div>your content</div>
+        </div>
     </div>
     <div class="row" style="margin-top: 15px;">
         <div id="mission">
@@ -63,72 +74,83 @@
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-xs-12">
             <h4 style="text-align: center;">Getting Involved</h2>
-            <div id="gettingInvolvedWell" class="well ministryWell">
-                <div id="hrsPerMonth">
-                    <strong>Time Commitment: </strong>
+                <div id="gettingInvolvedWell" class="well ministryWell">
+                    <div id="hrsPerMonth">
+                        <strong>Time Commitment: </strong>
+                    </div>
+                    <div id="skillsNeeded">
+                        <strong>Helpful Skills: </strong>
+                    </div>
+                    <div id="prereqs">
+                        <strong>Prerequisites: </strong>
+                    </div>
+                    <div id="keyDates">
+                        <strong>Key Dates: </strong>
+                    </div>
+                    <div id="contactPerson">
+                        <strong>Contact: </strong>
+                    </div>
+                    <div id="email">
+                        <strong>Email: </strong>
+                    </div>
+                    <div id="phone">
+                        <strong>Phone: </strong>
+                    </div>
+                    <div id="website">
+                        <strong>Website: </strong>
+                    </div>
+                    <div id="facebook">
+                        <strong>Facebook Page: </strong>
+                    </div>
                 </div>
-                <div id="skillsNeeded">
-                    <strong>Helpful Skills: </strong>
-                </div>
-                <div id="prereqs">
-                    <strong>Prerequisites: </strong>
-                </div>
-                <div id="keyDates">
-                    <strong>Key Dates: </strong>
-                </div>
-                <div id="contactPerson">
-                    <strong>Contact: </strong>
-                </div>
-                <div id="email">
-                    <strong>Email: </strong>
-                </div>
-                <div id="phone">
-                    <strong>Phone: </strong>
-                </div>
-                <div id="website">
-                    <strong>Website: </strong>
-                </div>
-                <div id="facebook">
-                    <strong>Facebook Page: </strong>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 <script>
 
+    $('.your-class').slick({
+        autoplay: true,
+        autoplaySpeed: 4000,
+        arrows: false,
+        fade: true,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        // slidesToShow: 1,
+        slidesToScroll: 4
+    });
+
     // gets url variable from string
-    function getSearchParams(k){
-        var p={};
-        location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
-        return k?p[k]:p;
+    function getSearchParams(k) {
+        var p = {};
+        location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (s, k, v) { p[k] = v })
+        return k ? p[k] : p;
     }
 
     // parse ministry data and find the correct ministry info for the page
     ministries = JSON.parse(data)
     ministryName = getSearchParams("group");
-    ministries.forEach(function(m) {
-        if(m["urlVar"] == ministryName) {
+    ministries.forEach(function (m) {
+        if (m["urlVar"] == ministryName) {
             ministry = m
         }
     });
 
     // modify article near top of Joomla template
-    if($(".page-header a")[0]) {
+    if ($(".page-header a")[0]) {
         $(".page-header").remove();
         $(".actions").remove();
     }
     $("#ministryName").text(ministry["ministryName"]);
 
     var categories = ministry["category"].split(", ");
-    categories.forEach(function(cat) {
+    categories.forEach(function (cat) {
         $("#categories").append('<span class="label label-default" style="margin: 2px; display: inline-block">' + cat + "</span>")
     });
 
     var pMinistryAttributes = ["mission", "history", "regActivities", "fundraisers", "regMeetings", "specialEvents"];
-    pMinistryAttributes.forEach(function(key) {
-        if(ministry[key]) {
+    pMinistryAttributes.forEach(function (key) {
+        if (ministry[key]) {
             $("#" + key).append('<p>' + ministry[key] + "</p>")
         } else {
             $("#" + key).html("");
@@ -136,45 +158,45 @@
     });
 
     var spanMinistryAttributes = ["contactPerson", "phone", "hrsPerMonth", "numMembers", "prereqs", "keyDates", "audience"];
-    spanMinistryAttributes.forEach(function(key) {
-            if(ministry[key]) {
-                $("#" + key).append('<span>' + ministry[key] + "</span>")
-            } else {
-                $("#" + key).html("");
+    spanMinistryAttributes.forEach(function (key) {
+        if (ministry[key]) {
+            $("#" + key).append('<span>' + ministry[key] + "</span>")
+        } else {
+            $("#" + key).html("");
         }
     });
 
     var linkMinistryAttributes = ["website", "facebook"];
-    linkMinistryAttributes.forEach(function(link) {
-            if(ministry[link]) {
-                $("#" + link).append('<a href="' + ministry[link] + '" target="_blank">' + ministry[link].replace("https://", "").replace("http://", "").replace(/\/+$/, "") + '</a>');
-            } else {
-                $("#" + link).html("");
+    linkMinistryAttributes.forEach(function (link) {
+        if (ministry[link]) {
+            $("#" + link).append('<a href="' + ministry[link] + '" target="_blank">' + ministry[link].replace("https://", "").replace("http://", "").replace(/\/+$/, "") + '</a>');
+        } else {
+            $("#" + link).html("");
         }
     });
 
-    if(ministry["hrsPerMonth"] && !isNaN(ministry["hrsPerMonth"])) {
+    if (ministry["hrsPerMonth"] && !isNaN(ministry["hrsPerMonth"])) {
         var appendedStr = ministry["hrsPerMonth"] == "1" ? " hour a month" : " hours a month";
         $("#hrsPerMonth").append(appendedStr);
     }
 
-    if(ministry["skillsNeeded"]) {
-        ministry["skillsNeeded"].split(", ").forEach(function(skill) {
+    if (ministry["skillsNeeded"]) {
+        ministry["skillsNeeded"].split(", ").forEach(function (skill) {
             $("#skillsNeeded").append('<span class="label label-default" style="display: inline-block; margin: 2px;" >' + skill + "</span>")
         });
     } else {
         $("#skillsNeeded").empty();
     }
 
-    if(ministry["email"]) {
+    if (ministry["email"]) {
         ministry["email"] = ministry["email"].replace("%", "@").replace("!", ".");
-        $("#email").html("<strong>Email:</strong> <a href='mailto:" + ministry["email"] + "'>" + ministry["email"] +"</a>");
+        $("#email").html("<strong>Email:</strong> <a href='mailto:" + ministry["email"] + "'>" + ministry["email"] + "</a>");
     } else {
         $("#email").empty();
     }
 
     header = ministry["header"];
-    if(header == "pray" || header == "pray") {
+    if (header == "pray" || header == "pray") {
         theme = "Come to the Supper of the Lamb";
     } else {
         theme = "Bring Christ to a Hungry World";
@@ -182,21 +204,21 @@
 
     $("#breadcrumbs").html(theme + " >> " + header.charAt(0).toUpperCase() + header.slice(1));
 
-    if(ministry["image"].length > 0) {
+    if (ministry["image"].length > 0) {
         $("#image-wrapper").append('<img style="max-height: 400px;" src="https://www.stpatrickcolumbus.org/images/ministries/' + ministry["image"] + '">');
     } else {
         $("#image-wrapper").append('<div class="replacementImage textOverImage" style="background-image: url(https://www.stpatrickcolumbus.org/images/ministries/' + ministry["header"] + '-blur.jpg">' + ministry["header"] + '</div>');
     }
 
     // hacky code to fix weird rotating image
-    if(ministry["image"] == "VBS2018.jpg") {
+    if (ministry["image"] == "VBS2018.jpg") {
         $("#image-wrapper img").css('transform', 'rotate(90deg)');
         $("#image-wrapper img").css('max-width', '400px');
         $("#image-wrapper img").css('margin-top', '50px');
         $("#image-wrapper").css('height', '400px');
     }
 
-    if($("#gettingInvolvedWell").text().trim() == "") { // ministry has no getting involved information, so hide that well
+    if ($("#gettingInvolvedWell").text().trim() == "") { // ministry has no getting involved information, so hide that well
         $("#gettingInvolvedWell").closest(".row").hide();
     }
 
