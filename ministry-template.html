@@ -6,8 +6,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i" rel="stylesheet">
-<script src="https://www.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="https://www.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js?1"></script>
 
 
 <div class="container-fluid">
@@ -25,13 +24,6 @@
         <h1 id="ministryName">Ministry Name</h1>
     </div>
     <div id="image-wrapper" class="row" style="text-align: center;">
-    </div>
-    <div class="row">
-        <div class="your-class">
-            <div>your content</div>
-            <div>your content</div>
-            <div>your content</div>
-        </div>
     </div>
     <div class="row" style="margin-top: 15px;">
         <div id="mission">
@@ -90,9 +82,6 @@
                     <div id="contactPerson">
                         <strong>Contact: </strong>
                     </div>
-                    <div id="email">
-                        <strong>Email: </strong>
-                    </div>
                     <div id="phone">
                         <strong>Phone: </strong>
                     </div>
@@ -108,17 +97,6 @@
 </div>
 
 <script>
-
-    $('.your-class').slick({
-        autoplay: true,
-        autoplaySpeed: 4000,
-        arrows: false,
-        fade: true,
-        pauseOnFocus: false,
-        pauseOnHover: false,
-        // slidesToShow: 1,
-        slidesToScroll: 4
-    });
 
     // gets url variable from string
     function getSearchParams(k) {
@@ -188,11 +166,8 @@
         $("#skillsNeeded").empty();
     }
 
-    if (ministry["email"]) {
-        ministry["email"] = ministry["email"].replace("%", "@").replace("!", ".");
-        $("#email").html("<strong>Email:</strong> <a href='mailto:" + ministry["email"] + "'>" + ministry["email"] + "</a>");
-    } else {
-        $("#email").empty();
+    if (ministry["contactID"]) {
+        $("#contactPerson").append(' <a href="https://stpatrickcolumbus.org/our-staff/' + ministry.contactID + '" target="_blank">Send Email</a>');
     }
 
     header = ministry["header"];
