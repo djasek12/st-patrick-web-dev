@@ -6,7 +6,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400i" rel="stylesheet">
-<script src="https://www.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js?1"></script>
+<script src="https://www.stpatrickcolumbus.org/templates/joomspirit_99/organizationInfo.js?4"></script>
 
 
 <div class="container-fluid">
@@ -62,36 +62,38 @@
         <div id="specialEvents">
             <strong>Special Events</strong>
         </div>
+        <div id="googleCalendar">
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-            <h4 style="text-align: center;">Getting Involved</h2>
-                <div id="gettingInvolvedWell" class="well ministryWell">
-                    <div id="hrsPerMonth">
-                        <strong>Time Commitment: </strong>
-                    </div>
-                    <div id="skillsNeeded">
-                        <strong>Helpful Skills: </strong>
-                    </div>
-                    <div id="prereqs">
-                        <strong>Prerequisites: </strong>
-                    </div>
-                    <div id="keyDates">
-                        <strong>Key Dates: </strong>
-                    </div>
-                    <div id="contactPerson">
-                        <strong>Contact: </strong>
-                    </div>
-                    <div id="phone">
-                        <strong>Phone: </strong>
-                    </div>
-                    <div id="website">
-                        <strong>Website: </strong>
-                    </div>
-                    <div id="facebook">
-                        <strong>Facebook Page: </strong>
-                    </div>
+            <h4 style="text-align: center;">Getting Involved</h4>
+            <div id="gettingInvolvedWell" class="well ministryWell">
+                <div id="hrsPerMonth">
+                    <strong>Time Commitment: </strong>
                 </div>
+                <div id="skillsNeeded">
+                    <strong>Helpful Skills: </strong>
+                </div>
+                <div id="prereqs">
+                    <strong>Prerequisites: </strong>
+                </div>
+                <div id="keyDates">
+                    <strong>Key Dates: </strong>
+                </div>
+                <div id="contactPerson">
+                    <strong>Contact: </strong>
+                </div>
+                <div id="phone">
+                    <strong>Phone: </strong>
+                </div>
+                <div id="website">
+                    <strong>Website: </strong>
+                </div>
+                <div id="facebook">
+                    <strong>Facebook Page: </strong>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -195,6 +197,10 @@
 
     if ($("#gettingInvolvedWell").text().trim() == "") { // ministry has no getting involved information, so hide that well
         $("#gettingInvolvedWell").closest(".row").hide();
+    }
+
+    if(ministry["ministryName"] == "Frassati Society") {
+        $("#googleCalendar").html('<iframe src="https://calendar.google.com/calendar/embed?src=columbusfrassatisociety%40gmail.com&amp;ctz=America%2FNew_York" frameborder="0" width="676" height="600" marginheight="0" marginwidth="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>');
     }
 
 </script>
