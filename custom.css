@@ -1,0 +1,11 @@
+/* CSS needed to mock header appropriately on individual ministries pages */
+
+.sp-page-title, .sp-page-title-no-img {height:170px;text-align:left;background-color:#97bd18;}
+
+.sp-page-title-no-img.org-template {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-top: -72px;
+}
+
+/* end of CSS for mock ministry headers */
